@@ -46,8 +46,8 @@ public class QuickSelect {
     //           fIndex
     // 2 -1 5 1 7 6 8 9 (swap fIndex and lIndex)
     
-    int[] arr;
-    QuickSelect(int[] arr) {
+    public int[] arr;
+    public QuickSelect(int[] arr) {
         this.arr = arr;
     }
 
@@ -66,7 +66,7 @@ public class QuickSelect {
     }
 
     private int partition(int fIndex, int lIndex) {
-        int pivot = new Random().nextInt(lIndex - fIndex + 1) + fIndex;
+        int pivot = getPivot(fIndex, lIndex);
         swap(pivot, lIndex);
         for(int i = fIndex; i < lIndex; i++) {
             if(arr[i] < arr[lIndex]) {
@@ -76,6 +76,10 @@ public class QuickSelect {
         }
         swap(lIndex, fIndex);
         return fIndex;
+    }
+
+    public int getPivot(int fIndex, int lIndex) {
+        return new Random().nextInt(lIndex - fIndex + 1) + fIndex;
     }
 
     public void swap(int index1, int index2) {
