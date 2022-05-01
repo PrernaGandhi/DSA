@@ -1,5 +1,6 @@
 package linear_search;
 
+// time complexity : O(N)
 public class LinearSearch {
     public int iterativeSearch(int[] arr, int element) {
         for(int index = 0; index < arr.length; index ++) {
