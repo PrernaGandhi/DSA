@@ -7,6 +7,12 @@ public class QuickSelect {
     //
     // best case complexity : O(N)
     // worst case complexity : O(N^2)
+    //
+    // Partition phase takes O(N) time complexity,
+    // each time N becomes smaller and smaller,
+    // if we are not able to discard many items,
+    // then the complexity will be O(N^2) in worst case
+    //
     // find pivot -- random -- start and end
     // make sure that elements towards the left are smaller than the pivot
     // and elements towards the right are greater than the pivot element
