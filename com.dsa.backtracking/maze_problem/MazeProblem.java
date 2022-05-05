@@ -1,6 +1,9 @@
 package maze_problem;
 
 public class MazeProblem {
+    // 0  -- means valid path
+    // -1 -- means boulder
+    // 1  -- means solution
     private final int[][] mazeBoard;
     private final int size;
     int [] xMoves = {1, -1, 0, 0};
