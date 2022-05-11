@@ -1,23 +1,8 @@
 package n_queens;
 
 public class NQueens {
-    // We need to place N queens in an N*N chessboard,
-    // such that no two queens can attack each other
-    // O(N!) complexity
-    // after placing 1 queen of N queens, you have n-1 options,
-    // after placing 2 queens, you have n - 2 options,
-    // n(n - 1)(n -2)(n - 3) ....
-    // hence the complexity O(N!)
-    // when set queens is called for the first time,
-    // there will be no loops executed, so time complexity, would be constant,
-    // for the second time, the loop would be executed till 1 so complexity is
-    // 1 * 1
-    // third
-    // 1 * 2
-    // fourth
-    // 1 * 2 * 3
-    // n
-    // 1 * 2 * 3 * .... * (n - 1) * n
+    // Bruteforce approach takes O(N)
+    // backtracking reduces time complexity to exponential time
     private final int[][] chessBoard;
     private final int numOfQueens;
 
