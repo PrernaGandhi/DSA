@@ -35,4 +35,33 @@ public class RodCutting {
             }
         }
     }
+
+    public int solveRecursive(int rodLength, int i) {
+        if(rodLength == 0 || i == 0) {
+            return 0;
+        }
+        if(i > rodLength)
+            return solveRecursive(rodLength, i - 1);
+        int included = price[i] + solveRecursive(rodLength - i, i - 1);
+        int excluded = solveRecursive(rodLength, i - 1);
+        int result = Math.max(included, excluded);
+        return result;
+    }
+
+    public int solveMemoizedRecursive(int rodLength, int i) {
+        int result = 0;
+        if(dpTable[i][rodLength] != 0)
+            return dpTable[i][rodLength];
+        if(rodLength == 0 || i == 0) {
+            result = 0;
+        } else if (i > rodLength){
+            result = solveMemoizedRecursive(rodLength, i - 1);
+        } else {
+            int included = price[i] + solveMemoizedRecursive(rodLength - i, i - 1);
+            int excluded = solveMemoizedRecursive(rodLength, i - 1);
+            result = Math.max(included, excluded);
+        }
+        dpTable[i][rodLength] = result;
+        return result;
+    }
 }
