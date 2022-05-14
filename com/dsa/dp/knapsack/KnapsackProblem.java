@@ -68,4 +68,22 @@ public class KnapsackProblem {
             return Math.max(included, excluded);
         }
     }
+
+    public int solveRecursiveMemoized(int noOfItems, int capacityOfKnapsack) {
+        int result = 0;
+        if(dpTable[noOfItems][capacityOfKnapsack] != 0) {
+            return dpTable[noOfItems][capacityOfKnapsack];
+        }
+        if(noOfItems == 0 || capacityOfKnapsack == 0)
+            result = 0;
+        else if(weights[noOfItems] > capacityOfKnapsack)
+            result = solveRecursiveMemoized(noOfItems - 1, capacityOfKnapsack);
+        else {
+            int included = values[noOfItems] + solveRecursiveMemoized(noOfItems - 1, capacityOfKnapsack - weights[noOfItems]);
+            int excluded = solveRecursiveMemoized(noOfItems - 1, capacityOfKnapsack);
+            result = Math.max(included, excluded);
+        }
+        dpTable[noOfItems][capacityOfKnapsack] = result;
+        return result;
+    }
 }
