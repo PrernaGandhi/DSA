@@ -1,7 +1,6 @@
 package com.dsa.graph.algorithms.dfs;
 
 import com.dsa.graph.algorithms.Vertex;
-import com.dsa.graph.algorithms.bfs.BreadthFirstSearch;
 
 public class Runner {
     public static void main(String[] args) {
@@ -36,6 +35,9 @@ public class Runner {
 
         h.addNeighbour(g);
 
-        depthFirstSearch.traverse(a);
+        //depthFirstSearch.traverse(a);
+        System.out.println("-------");
+        DepthFirstSearchRecursion depthFirstSearchRecursion = new DepthFirstSearchRecursion();
+        depthFirstSearchRecursion.dfs(a);
     }
 }
