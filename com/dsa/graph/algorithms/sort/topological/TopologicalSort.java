@@ -45,7 +45,6 @@ public class TopologicalSort {
     }
 
     public void printOutput() {
-        System.out.println(this.stack.size());
         // we iterate through graph size and not stack size
         // bcoz in each iteration, stack size is decreased due
         // to popping of item in each step
