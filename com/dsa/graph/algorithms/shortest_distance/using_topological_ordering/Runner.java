@@ -23,7 +23,7 @@ public class Runner {
         v2.addEdge(new Edge(v5, 2));
 
         v3.addEdge(new Edge(v1, 4));
-        v3.addEdge(new Edge(v3, 3));
+        v3.addEdge(new Edge(v4, 3));
 
         v4.addEdge(new Edge(v5, 1));
 
@@ -37,8 +37,10 @@ public class Runner {
         ShortestPath shortestPath = new ShortestPath(graph);
         shortestPath.compute();
 
+        // distance of each vertex from source vertex
         for (Vertex vertex : graph) {
-            System.out.println("Distance from source to " + vertex.getName() + " : " + vertex.getMinDistance() + " - " + vertex.getPredecessor());
+            System.out.println("Distance from source to " + vertex.getName() + " : "
+                    + vertex.getMinDistance() + " - " + vertex.getPredecessor());
         }
     }
 }
