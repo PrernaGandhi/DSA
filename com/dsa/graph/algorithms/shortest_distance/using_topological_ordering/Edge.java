@@ -1,4 +1,4 @@
-package com.dsa.graph.algorithms.shortest_distance;
+package com.dsa.graph.algorithms.shortest_distance.using_topological_ordering;
 
 public class Edge {
     private Vertex target;

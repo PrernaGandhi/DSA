@@ -1,4 +1,4 @@
-package com.dsa.graph.algorithms.shortest_distance;
+package com.dsa.graph.algorithms.shortest_distance.using_topological_ordering;
 
 import java.util.List;
 import java.util.Stack;
