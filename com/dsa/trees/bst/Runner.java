@@ -17,6 +17,7 @@ public class Runner {
 
         bst.traversal();
         System.out.println("The fourth smallest item is : " + bst.getSmallest(bst.getRootNode(), 4));
+        System.out.println("Sum of tree is : " + bst.getSum(bst.getRootNode()));
 
         // remove leaf node
         bst.remove(16);
@@ -28,5 +29,6 @@ public class Runner {
         bst.traversal();
 
         System.out.println("The fourth smallest item is : " + bst.getSmallest(bst.getRootNode(), 4));
+        System.out.println("Sum of tree is : " + bst.getSum(bst.getRootNode()));
     }
 }

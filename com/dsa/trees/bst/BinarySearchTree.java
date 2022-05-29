@@ -206,6 +206,22 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
     }
 
     @Override
+    public Integer getSum(Node<T> node) {
+        // base case
+        // check if node is null
+        // then return 0
+        if (node == null)
+            return 0;
+        // get sum of left sub tree
+        int leftSum = getSum(node.getLeftChild());
+        // get sum of right sub tree
+        int rightSum = getSum(node.getRightChild());
+        // total sum = sum of current node + sum of left sub tree + sum of right sub tree
+        System.out.println("Sum so far for Node " + node + " : " + (leftSum + rightSum + (Integer) node.getData()));
+        return leftSum + rightSum + (Integer) node.getData();
+    }
+
+    @Override
     public Node<T> getSmallest(Node<T> node, int k) {
 
         // +1 because we count the root node of the sub structure
