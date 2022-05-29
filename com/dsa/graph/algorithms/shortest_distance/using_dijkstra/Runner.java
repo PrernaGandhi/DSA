@@ -37,8 +37,14 @@ public class Runner {
         DijkstraAlgorithm algorithm = new DijkstraAlgorithm();
         algorithm.computePath(v0);
 
-        System.out.println(algorithm.getShortestPathTo(v6));
+        System.out.println(algorithm.getShortestPathTo(v0));
+        System.out.println(algorithm.getShortestPathTo(v1));
+        System.out.println(algorithm.getShortestPathTo(v2));
         System.out.println(algorithm.getShortestPathTo(v3));
+        System.out.println(algorithm.getShortestPathTo(v4));
+        System.out.println(algorithm.getShortestPathTo(v5));
+        System.out.println(algorithm.getShortestPathTo(v6));
+        System.out.println(algorithm.getShortestPathTo(v7));
 
     }
 }

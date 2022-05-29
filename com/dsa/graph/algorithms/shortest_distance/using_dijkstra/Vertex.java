@@ -57,6 +57,7 @@ public class Vertex implements Comparable<Vertex> {
         this.predecessors = predecessors;
     }
 
+    // compare the vertices based on minimum distance from the source
     @Override
     public int compareTo(Vertex vertex) {
         return Double.compare(this.minDistance, vertex.getMinDistance());
