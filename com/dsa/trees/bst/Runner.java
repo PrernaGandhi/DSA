@@ -1,7 +1,5 @@
 package com.dsa.trees.bst;
 
-import com.dsa.trees.bst.BinarySearchTree;
-
 public class Runner {
     public static void main(String[] args) {
 
@@ -18,6 +16,7 @@ public class Runner {
         System.out.println("Min value is : " + bst.getMin());
 
         bst.traversal();
+        System.out.println("The fourth smallest item is : " + bst.getSmallest(bst.getRootNode(), 4));
 
         // remove leaf node
         bst.remove(16);
@@ -28,5 +27,6 @@ public class Runner {
         bst.remove(12);
         bst.traversal();
 
+        System.out.println("The fourth smallest item is : " + bst.getSmallest(bst.getRootNode(), 4));
     }
 }

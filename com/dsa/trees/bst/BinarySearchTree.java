@@ -143,7 +143,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
     }
 
     private Node<T> getPredecessor(Node<T> node) {
-        if(node.getRightChild() != null) {
+        if (node.getRightChild() != null) {
             return getPredecessor(node.getRightChild());
         }
         return node;
@@ -203,6 +203,30 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         }
 
         return node.getData();
+    }
+
+    @Override
+    public Node<T> getSmallest(Node<T> node, int k) {
+
+        // +1 because we count the root node of the sub structure
+        int numberOfNodesInLeftSubTree = treeSize(node.getLeftChild()) + 1;
+
+        if (numberOfNodesInLeftSubTree == k) {
+            return node;
+        }
+        if (numberOfNodesInLeftSubTree > k)
+            return getSmallest(node.getLeftChild(), k);
+        if (numberOfNodesInLeftSubTree < k)
+            return getSmallest(node.getRightChild(), k - numberOfNodesInLeftSubTree);
+        return null;
+    }
+
+    private int treeSize(Node<T> node) {
+        if (node == null) {
+            return 0;
+        }
+        // size of left sub tree + size of right sub tree + 1
+        return treeSize(node.getLeftChild()) + treeSize(node.getRightChild()) + 1;
     }
 
     public Node<T> getRootNode() {

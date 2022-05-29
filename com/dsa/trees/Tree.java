@@ -1,6 +1,7 @@
 package com.dsa.trees;
 
 public interface Tree<T> {
+    public Node<T> getSmallest(Node<T> node, int k);
     public Node<T> getRootNode();
     public void insert(T data);
     public void remove(T data);
