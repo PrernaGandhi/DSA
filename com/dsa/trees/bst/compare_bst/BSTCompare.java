@@ -1,6 +1,6 @@
 package com.dsa.trees.bst.compare_bst;
 
-import com.dsa.trees.Node;
+import com.dsa.trees.bst.Node;
 
 public class BSTCompare<T extends Comparable<T>> {
 

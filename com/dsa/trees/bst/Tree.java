@@ -1,4 +1,6 @@
-package com.dsa.trees;
+package com.dsa.trees.bst;
+
+import com.dsa.trees.bst.Node;
 
 public interface Tree<T> {
     public Integer getSum(Node<T> node);

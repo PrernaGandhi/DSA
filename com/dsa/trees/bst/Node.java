@@ -1,4 +1,4 @@
-package com.dsa.trees;
+package com.dsa.trees.bst;
 
 public class Node<T> {
     private T data;

@@ -1,8 +1,5 @@
 package com.dsa.trees.bst;
 
-import com.dsa.trees.Node;
-import com.dsa.trees.Tree;
-
 // we need to extend Comparable interface because we need to compare values
 // in each step while inserting, traversing, etc.
 public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
