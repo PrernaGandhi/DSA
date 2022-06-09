@@ -1,8 +1,8 @@
 package hamiltonian_cycle;
 
-public class App {
+public class Runner {
     public static void main(String[] args) {
-        int [] [] adjacencyMatrix = {
+        int[][] adjacencyMatrix = {
                 {0, 1, 0, 0, 0, 1},
                 {1, 0, 1, 0, 0, 0},
                 {0, 1, 0, 0, 1, 0},
