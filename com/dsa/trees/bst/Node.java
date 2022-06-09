@@ -6,6 +6,7 @@ public class Node<T> {
     private Node<T> rightChild;
     // crucial when defining the remove method
     private Node<T> parentNode;
+    private boolean isVisited;
 
     public Node(T data, Node<T> parentNode) {
         this.data = data;
@@ -42,6 +43,14 @@ public class Node<T> {
 
     public void setParentNode(Node<T> parentNode) {
         this.parentNode = parentNode;
+    }
+
+    public boolean isVisited() {
+        return isVisited;
+    }
+
+    public void setVisited(boolean visited) {
+        isVisited = visited;
     }
 
     @Override
