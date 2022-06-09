@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Bin {
 
+    // each bin will have a unique id
     private int id;
     // capacity of the bin
     private int capacity;
@@ -21,12 +22,13 @@ public class Bin {
 
     public boolean put(Integer item) {
         // item doesn't fit in the bin
-        if(actualSize + item > capacity) {
+        if (actualSize + item > capacity) {
             return false;
         }
 
         // add item to bin
         items.add(item);
+        // increment the size of the bin by the item size
         actualSize += item;
         return true;
     }
@@ -35,7 +37,7 @@ public class Bin {
     @Override
     public String toString() {
         String contentOfBin = "Items in bin : #" + this.id + " : ";
-        for(Integer item : this.items) {
+        for (Integer item : this.items) {
             contentOfBin += item + " ";
         }
         return contentOfBin;
