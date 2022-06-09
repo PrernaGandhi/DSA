@@ -1,6 +1,6 @@
 package knights_tour_problem;
 
-public class App {
+public class Runner {
     public static void main(String[] args) {
         KnightsTour problem = new KnightsTour(4);
         problem.solve();
