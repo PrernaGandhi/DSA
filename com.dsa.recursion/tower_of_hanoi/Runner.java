@@ -1,8 +1,8 @@
 package tower_of_hanoi;
 
-public class App {
+public class Runner {
     public static void main(String[] args) {
         TowerOfHanoi towerOfHanoi = new TowerOfHanoi();
-        towerOfHanoi.solve(2, 'A', 'B', 'C' );
+        towerOfHanoi.solve(2, 'A', 'B', 'C');
     }
 }
