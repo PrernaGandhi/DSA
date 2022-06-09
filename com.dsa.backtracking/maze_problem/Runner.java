@@ -1,8 +1,8 @@
 package maze_problem;
 
-public class App {
+public class Runner {
     public static void main(String[] args) {
-        int [][] mazeBoard = {
+        int[][] mazeBoard = {
                 {0, 0, 0, 0},
                 {0, -1, 0, -1},
                 {-1, -1, 0, 0},
