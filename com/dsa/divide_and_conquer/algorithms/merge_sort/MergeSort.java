@@ -1,11 +1,33 @@
 package com.dsa.divide_and_conquer.algorithms.merge_sort;
 
+/*
+    Sort given array of integers with the help of merge sort
+
+                                        [5, -1, 0, 7, 2, 3, 2, 1, 0, 1, 2]
+                                                /                \
+                                    [5, -1, 0, 7, 2]          [3, 2, 1, 0, 1, 2]
+                                       /      \                    /        \
+                                  [5, -1]    [0, 7, 2]        [3, 2, 1]    [0, 1, 2]
+                                   /  \         /  \            /  \           / \
+                                 [5]  [-1]    [0]  [7, 2]     [3]   [2, 1]   [0]   [1, 2]
+                                 /      \     /     /   \     /     /   \    /      /  \
+                                [5]    [-1]  [0]   [7]  [2]  [3]   [2]  [1] [0]   [1]  [2]
+                                 \     /     /      \    /   /      \   /   /      \    /
+                                 [-1, 5]   [0]      [2, 7]  [3]    [1, 2]  [0]     [1, 2]
+                                    \      /           \    /        \     /          |
+                                   [-1, 0, 5]         [2, 3, 7]     [0, 1, 2]      [1, 2]
+                                        \               /               \            /
+                                       [-1, 0, 2, 3, 5, 7]              [0, 1, 1, 2, 2]
+                                                 \                           /
+                                              [-1, 0, 0, 1, 1, 2, 2, 2, 3, 5, 7]
+*/
+
 public class MergeSort {
-    private int [] nums;
+    private int[] nums;
 
-    private int [] tempArray;
+    private int[] tempArray;
 
-    public MergeSort(int [] nums) {
+    public MergeSort(int[] nums) {
         this.nums = nums;
         this.tempArray = new int[nums.length];
     }
@@ -20,47 +42,67 @@ public class MergeSort {
         mergeSort(0, nums.length - 1);
     }
 
-    private void mergeSort(int low, int high) {
-        if( low >= high)
+    private void mergeSort(int startIndex, int endIndex) {
+        if (startIndex >= endIndex)
             return;
 
-        // middle index
-        int middleIndex = (low + high) / 2;
+        // find the middle index
+        int middleIndex = (startIndex + endIndex) / 2;
 
         // splitting the problems into sub and sub-problems
         // until it contains only one array
-        mergeSort(low, middleIndex);
-        mergeSort(middleIndex + 1, high);
-        
-        merge(low, middleIndex, high);
+        // sort the first half of the array
+        mergeSort(startIndex, middleIndex);
+        // sort the second half of the array
+        mergeSort(middleIndex + 1, endIndex);
+        // merge both arrays
+        merge(startIndex, middleIndex, endIndex);
     }
 
-    private void merge(int low, int middleIndex, int high) {
-        for(int i = low; i <= high; i++)
+    private void merge(int startIndex, int middleIndex, int endIndex) {
+        // making a copy of the original array
+        for (int i = startIndex; i <= endIndex; i++)
             tempArray[i] = nums[i];
 
-        int i = low;
+        // counter for 1st half of array
+        int i = startIndex;
+        // counter for second half of array
         int j = middleIndex + 1;
-        int k = low;
+        // counter for the main array
+        int k = startIndex;
 
-        while (i <= middleIndex && j <=high) {
-            if(tempArray[i] < tempArray[j]) {
+        while (i <= middleIndex && j <= endIndex) {
+            // if element of 1st half of array is smaller than
+            // element of 2nd half of array
+            if (tempArray[i] < tempArray[j]) {
                 nums[k] = tempArray[i];
+                // we increment the counter for the 1st half of array
                 ++i;
             } else {
                 nums[k] = tempArray[j];
+                // we increment the counter for 2nd half of the array
                 ++j;
             }
             k++;
         }
 
-        while(i <= middleIndex) {
+        // if size of 1st half of array is greater
+        // than size of 2nd half of array
+        // it means there are still elements left
+        // in 1st half of the array
+        // so copying over to the original array
+        while (i <= middleIndex) {
             nums[k] = tempArray[i];
             k++;
             i++;
         }
 
-        while(j <= high) {
+        // if size of 2nd half of array is greater
+        // than size of 1st half of array
+        // it means there are still elements left
+        // in 2nd half of the array
+        // so copying over to the original array
+        while (j <= endIndex) {
             nums[k] = tempArray[j];
             k++;
             j++;
