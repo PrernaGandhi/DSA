@@ -1,6 +1,6 @@
 package fibonacci;
 
-public class App {
+public class Runner {
     public static void main(String[] args) {
         Fibonacci fibonacci = new Fibonacci();
         System.out.println(fibonacci.headRecursion(10));
