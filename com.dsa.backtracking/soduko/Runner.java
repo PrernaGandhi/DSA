@@ -1,6 +1,6 @@
 package soduko;
 
-public class App {
+public class Runner {
     public static void main(String[] args) {
         int[][] sodukoBoard = {
                 {3, 0, 6, 5, 0, 8, 4, 0, 0},
