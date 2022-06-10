@@ -13,6 +13,9 @@ public class Runner {
         map.put(1, 1);
         // it has O(N) linear running time
         System.out.println(fibonacci.fibonacciMemoization(12, map));
+        map = new HashMap<>();
+        map.put(0, 1);
+        map.put(1, 1);
         System.out.println(fibonacci.fibonacciTabulation(12, map));
     }
 }
