@@ -5,14 +5,11 @@ public class Runner {
         int[] price = {0, 2, 5, 7, 3, 9};
         int rodLength = 5;
         RodCutting problem = new RodCutting(price, rodLength);
-        System.out.println(problem.solution());
+        System.out.println("DP : " + problem.solution());
         problem.showSolution();
 
         problem = new RodCutting(price, rodLength);
-        System.out.println(problem.solveRecursive(rodLength, rodLength));
+        System.out.println("Recursive : " + problem.solveRecursive(rodLength, rodLength));
 
-        problem = new RodCutting(price, rodLength);
-        System.out.println(problem.solveMemoizedRecursive(rodLength, rodLength));
-        problem.showSolution();
     }
 }
