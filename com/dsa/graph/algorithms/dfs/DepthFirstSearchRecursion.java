@@ -17,7 +17,10 @@ public class DepthFirstSearchRecursion {
     //          (E)
     //
     // DFS with 'A' as source --> A B C D E F G H
+    // visit root left right
 
+    // we visit neighbour of neighbour of neighbour of root node instead of
+    // visiting all adjacent neighbours of root node
     public void dfs(Vertex vertex) {
         vertex.setVisited(true);
         System.out.println(vertex);

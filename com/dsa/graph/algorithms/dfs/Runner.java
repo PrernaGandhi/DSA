@@ -6,6 +6,16 @@ public class Runner {
     public static void main(String[] args) {
         DepthFirstSearch depthFirstSearch = new DepthFirstSearch();
 
+        Vertex a = getRootNode();
+
+        depthFirstSearch.traverse(a);
+        System.out.println("------------------------");
+        DepthFirstSearchRecursion depthFirstSearchRecursion = new DepthFirstSearchRecursion();
+        a = getRootNode();
+        depthFirstSearchRecursion.dfs(a);
+    }
+
+    private static Vertex getRootNode() {
         Vertex a = new Vertex("A");
         Vertex b = new Vertex("B");
         Vertex c = new Vertex("C");
@@ -34,10 +44,6 @@ public class Runner {
         g.addNeighbour(h);
 
         h.addNeighbour(g);
-
-        //depthFirstSearch.traverse(a);
-        System.out.println("-------");
-        DepthFirstSearchRecursion depthFirstSearchRecursion = new DepthFirstSearchRecursion();
-        depthFirstSearchRecursion.dfs(a);
+        return a;
     }
 }
