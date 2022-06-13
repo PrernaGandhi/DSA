@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class DijkstraAlgorithm {
-
+    // works for DAG(Directed Acyclic Graphs) and cyclic graphs
+    // can handle only positive edge weights
+    //  O(VlogV + E)
     //                    15
     //        (   B   ) -----> ( D )
     //       /\ |      \        /\ |
