@@ -6,10 +6,14 @@ import java.util.List;
 public class Vertex implements Comparable<Vertex> {
     private String name;
     private boolean isVisited;
+    // min distance from the source vertex
     private int minDistance;
+    // if we have a weighted graph,
+    // then we explicitly need to have
+    // neighbours of type Edge
     private List<Edge> neighbours;
     // previous vertex on the shortest path
-    private Vertex predecessors;
+    private Vertex predecessor;
 
     public Vertex(String name) {
         this.name = name;
@@ -50,11 +54,11 @@ public class Vertex implements Comparable<Vertex> {
     }
 
     public Vertex getPredecessor() {
-        return predecessors;
+        return predecessor;
     }
 
-    public void setPredecessors(Vertex predecessors) {
-        this.predecessors = predecessors;
+    public void setPredecessor(Vertex predecessor) {
+        this.predecessor = predecessor;
     }
 
     // compare the vertices based on minimum distance from the source

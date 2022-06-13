@@ -11,9 +11,9 @@ public class Runner {
         Vertex v6 = new Vertex("G");
         Vertex v7 = new Vertex("H");
 
-        v0.addEdge(new Edge(v0, v1,5));
-        v0.addEdge(new Edge(v0, v4,9));
-        v0.addEdge(new Edge(v0, v7,8));
+        v0.addEdge(new Edge(v0, v1, 5));
+        v0.addEdge(new Edge(v0, v4, 9));
+        v0.addEdge(new Edge(v0, v7, 8));
 
         v1.addEdge(new Edge(v1, v2, 12));
         v1.addEdge(new Edge(v1, v3, 15));
