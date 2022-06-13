@@ -36,11 +36,6 @@ public class Runner {
 
         ShortestPath shortestPath = new ShortestPath(graph);
         shortestPath.compute();
-
-        // distance of each vertex from source vertex
-        for (Vertex vertex : graph) {
-            System.out.println("Distance from source to " + vertex.getName() + " : "
-                    + vertex.getMinDistance() + " - " + vertex.getPredecessor());
-        }
+        shortestPath.printSolution();
     }
 }
