@@ -28,10 +28,11 @@ public class Runner {
 
         TopologicalSort topologicalSort = new TopologicalSort(graph);
 
-        for (int i = 0; i < graph.size(); ++i)
-            if (!graph.get(i).isVisited())
-                topologicalSort.dfs(graph.get(i));
-
+        // we iterate through each vertex of the graph
+        // this is done for cases like 0 vertex has no neighbours
+        // now if 0 is the starting vertex, we don't have any way to
+        // visit the other vertices
+        topologicalSort.sort();
         topologicalSort.printOutput();
     }
 }

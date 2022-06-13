@@ -22,6 +22,32 @@ public class TopologicalSort {
     // 2 is dependent on 5, so 5 will be printed before 2
     // 5 4 2 3 1 0
 
+    /*
+        Let's see how this works in action
+
+            1.  We iterate each of the graph vertex starting from 0 to 5
+            2.  If the vertex has no neighbours, we push it to the stack
+            3.  If vertex has neighbours, we visit all the unvisited vertices,
+            4.  The last visited neighbour is added to the stack
+
+        (5) --> (2) --> (3)
+         |               |
+         V               V
+        (0) <-- (4) --> (1)
+
+                Vertex  |   Neighbours                  |   Stack
+              ----------|-------------------------------|-------------
+                   0    |                               |   [0]
+                   1    |                               |   [1,0]
+                   2    | 3 -> 1(visited already)       |   [2,3,1,0]
+                   3    |   1(already visited)          |
+                   4    |   1(visited), 0(visited)      |   [4,2,3,1,0]
+                   5    |   2(visited), 0(visited)      |   [5,4,2,3,1,0]
+
+
+        Stack : [5,4,2,3,1,0]
+
+     */
     private Stack<Vertex> stack;
 
     private List<Vertex> graph;
@@ -31,9 +57,22 @@ public class TopologicalSort {
         this.graph = graph;
     }
 
-    public void dfs(Vertex vertex) {
+    public void sort() {
+        for (int index = 0; index < graph.size(); ++index)
+            if (!graph.get(index).isVisited())
+                dfs(graph.get(index));
+    }
+
+    private void dfs(Vertex vertex) {
         vertex.setVisited(true);
 
+        // if the vertex has neighbours,
+        // we visit all the neighbours
+        // the last neighbour visited gets added
+        // into the stack first
+        // if the vertex doesn't have any neighbours
+        // it gets pushed to the stack first
+        //
         for (Vertex v : vertex.getNeighbours()) {
             if (!v.isVisited()) {
                 dfs(v);
@@ -48,7 +87,7 @@ public class TopologicalSort {
         // we iterate through graph size and not stack size
         // bcoz in each iteration, stack size is decreased due
         // to popping of item in each step
-        for(int i = 0; i < this.graph.size(); ++i) {
+        for (int index = 0; index < this.graph.size(); ++index) {
             System.out.print(this.stack.pop() + " ");
         }
     }
