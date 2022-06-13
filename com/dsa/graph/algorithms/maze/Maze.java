@@ -18,6 +18,8 @@ public class Maze {
     }
 
     public void findWay() {
+        // if I am able to find a solution starting from
+        // the start row and start column
         if (dfs(startRow, startColumn)) {
             System.out.println("We found the solution");
         } else {
@@ -36,33 +38,33 @@ public class Maze {
         if (visited[x][y])
             return false;
         // there is an obstacle in the way
-        if(maze[x][y] == 1)
+        if (maze[x][y] == 1)
             return false;
 
         return true;
     }
 
     private boolean dfs(int x, int y) {
-        if(x == maze.length - 1 && y == maze.length - 1)
+        if (x == maze.length - 1 && y == maze.length - 1)
             return true;
 
-        if(isFeasible(x, y)) {
+        if (isFeasible(x, y)) {
             visited[x][y] = true;
 
             // go down
-            if(dfs(x + 1,y))
+            if (dfs(x + 1, y))
                 return true;
 
             // go up
-            if(dfs(x - 1, y))
+            if (dfs(x - 1, y))
                 return true;
 
             // go right
-            if(dfs(x, y + 1))
+            if (dfs(x, y + 1))
                 return true;
 
             // go left
-            if(dfs(x, y - 1))
+            if (dfs(x, y - 1))
                 return true;
 
             // BACKTRACK
@@ -71,5 +73,4 @@ public class Maze {
         }
         return false;
     }
-
 }
