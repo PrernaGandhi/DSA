@@ -1,6 +1,6 @@
 package linear_search;
 
-public class App {
+public class Runner {
     public static void main(String[] args) {
         LinearSearch linearSearch = new LinearSearch();
         System.out.println(linearSearch.iterativeSearch(new int[]{1, 5, 30, 2, 70, 199, 100}, 2));
