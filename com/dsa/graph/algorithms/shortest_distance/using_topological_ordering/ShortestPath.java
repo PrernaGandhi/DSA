@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Stack;
 
 public class ShortestPath {
+    // Doesn't work with non negative weights
+    // does not work with cycles
+    //  O(V + E)
     //      1       6       2
     // (S) --> (A) --> (B) --> (E)
     //  |     /\        |      /\
