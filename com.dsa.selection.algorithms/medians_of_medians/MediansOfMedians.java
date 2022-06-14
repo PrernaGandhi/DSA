@@ -17,27 +17,35 @@ public class MediansOfMedians extends QuickSelect {
 
     int[] med;
     int index = 0;
+
     MediansOfMedians(int[] arr) {
         super(arr);
-        this.med = new int[(arr.length % 5 == 0 ? arr.length/5 : arr.length + 1)];
+        this.med = new int[(arr.length % 5 == 0 ? arr.length / 5 : arr.length + 1)];
     }
 
     @Override
     public int getPivot(int fIndex, int lIndex) {
-        for(int i = fIndex; i <= lIndex; i+=5) {
+        for (int i = fIndex; i <= lIndex; i += 5) {
+
             int min = Math.min(i + 5, lIndex);
+            // sort arrays in chunks of 5
             sort(arr, i, min);
-            med[index] = (int) Math.round((min + i)/ 2.0);
+            // find the median in the array
+            med[index] = (int) Math.round((min + i) / 2.0);
             index++;
         }
+        // this contains index of medians of each chunk of array
         sort(med, 0, index);
-        int medianIndex = (index - 1 )/2;
+        // find the medianIndex
+        int medianIndex = (index - 1) / 2;
+        // median of median
         int median = med[medianIndex];
-        this.med = new int[(arr.length/5) + 1];
-        index=0;
+        this.med = new int[(arr.length / 5) + 1];
+        index = 0;
         return median;
     }
 
+    // sort using insertion sort
     private void sort(int[] arr, int start, int end) {
         for (int i = start; i < end; ++i) {
             int key = arr[i];
