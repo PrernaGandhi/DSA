@@ -64,6 +64,7 @@ public class Traversals<T> {
         System.out.print(node + " ");
     }
 
+    // matches with implementation of bfs
     public void levelOrder(Node<T> node) {
         if (node == null)
             return;
