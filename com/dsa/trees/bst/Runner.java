@@ -20,9 +20,9 @@ public class Runner {
         System.out.println("Sum of tree is : " + bst.getSum(bst.getRootNode()));
 
         // remove leaf node
-        bst.remove(16);
+        //bst.remove(16);
         // remove with single right child, after removing 16
-        bst.remove(20);
+        //bst.remove(20);
         // remove with 2 children
         //bst.remove(4);
         bst.remove(12);
