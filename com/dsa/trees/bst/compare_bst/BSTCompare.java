@@ -2,6 +2,9 @@ package com.dsa.trees.bst.compare_bst;
 
 import com.dsa.trees.bst.Node;
 
+/*
+    Compare if two BST are equal or not
+ */
 public class BSTCompare<T extends Comparable<T>> {
 
     public boolean bstCompare(Node<T> node1, Node<T> node2) {
