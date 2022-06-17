@@ -19,8 +19,8 @@ public class AVLTree<T extends Comparable<T>> implements Tree<T> {
             // parent of root node is null
             rootNode = new Node<>(data, null);
         }
-
         insert(data, rootNode);
+
     }
 
     private void insert(T data, Node<T> node) {
@@ -33,7 +33,7 @@ public class AVLTree<T extends Comparable<T>> implements Tree<T> {
             else
                 node.setLeftChild(new Node<>(data, node));
         } // go to right sub tree
-        else {
+        else if (node.getData().compareTo(data) < 0) {
             // if right child exists, traverse the right child
             if (node.getRightChild() != null)
                 insert(data, node.getRightChild());
@@ -44,16 +44,17 @@ public class AVLTree<T extends Comparable<T>> implements Tree<T> {
         updateHeight(node);
         // settle the violation
         // check whether AVL properties are violated or not
-
+        settleViolations(node);
     }
 
     // can be achieved in O(1) running time
     private void rightRotation(Node<T> node) {
-        Node<T> temp = node.getLeftChild();
-        Node<T> grandChild = temp.getRightChild();
+        System.out.println("Right rotation on the node " + node);
+        Node<T> tempLeftChild = node.getLeftChild();
+        Node<T> grandChild = tempLeftChild.getRightChild();
 
         // make rotation
-        temp.setRightChild(node);
+        tempLeftChild.setRightChild(node);
         node.setLeftChild(grandChild);
 
         // we have to notify the parents
@@ -63,17 +64,35 @@ public class AVLTree<T extends Comparable<T>> implements Tree<T> {
 
         // we need to handle parents of the node
         Node<T> parent = node.getParentNode();
-        node.setParentNode(temp);
-        temp.setParentNode(parent);
+        node.setParentNode(tempLeftChild);
+        tempLeftChild.setParentNode(parent);
+
+        // we have to handle the parents
+        if (tempLeftChild.getParentNode() != null && tempLeftChild.getParentNode().getLeftChild() == node) {
+            tempLeftChild.getParentNode().setLeftChild(tempLeftChild);
+        }
+        if (tempLeftChild.getParentNode() != null && tempLeftChild.getParentNode().getRightChild() == node) {
+            tempLeftChild.getParentNode().setRightChild(tempLeftChild);
+        }
+
+        // if there is no parent after it has become the root node
+        if (node == rootNode) {
+            rootNode = tempLeftChild;
+        }
+
+        updateHeight(node);
+        updateHeight(tempLeftChild);
     }
 
     // can be achieved in O(1) running time
     private void leftRotation(Node<T> node) {
-        Node<T> temp = node.getRightChild();
-        Node<T> grandChild = temp.getLeftChild();
+        System.out.println("Left rotation on the node " + node);
+
+        Node<T> tempRightChild = node.getRightChild();
+        Node<T> grandChild = tempRightChild.getLeftChild();
 
         // make rotation
-        temp.setLeftChild(node);
+        tempRightChild.setLeftChild(node);
         node.setRightChild(grandChild);
         // we have to notify the parents
         if (grandChild != null) {
@@ -82,8 +101,25 @@ public class AVLTree<T extends Comparable<T>> implements Tree<T> {
 
         // we need to handle parents of the node
         Node<T> parent = node.getParentNode();
-        node.setParentNode(temp);
-        temp.setParentNode(parent);
+        node.setParentNode(tempRightChild);
+        tempRightChild.setParentNode(parent);
+
+        // we have to handle the parents
+        if (tempRightChild.getParentNode() != null && tempRightChild.getParentNode().getLeftChild() == node) {
+            tempRightChild.getParentNode().setLeftChild(tempRightChild);
+        }
+        if (tempRightChild.getParentNode() != null && tempRightChild.getParentNode().getRightChild() == node) {
+            tempRightChild.getParentNode().setRightChild(tempRightChild);
+        }
+
+        // if there is no parent after it has become the root node
+        if (node == rootNode) {
+            rootNode = tempRightChild;
+        }
+
+        updateHeight(node);
+        updateHeight(tempRightChild);
+
     }
 
     @Override
@@ -105,18 +141,20 @@ public class AVLTree<T extends Comparable<T>> implements Tree<T> {
             if (node.getRightChild() == null && node.getLeftChild() == null) {
                 System.out.println("Removing a node with no child ..... ");
 
-                Node<T> parentNode = node.getParentNode();
-                if (parentNode != null && parentNode.getLeftChild() == node) {
-                    parentNode.setLeftChild(null);
-                } else if (parentNode != null && parentNode.getRightChild() == node) {
-                    parentNode.setRightChild(null);
+                Node<T> parent = node.getParentNode();
+                if (parent != null && parent.getLeftChild() == node) {
+                    parent.setLeftChild(null);
+                } else if (parent != null && parent.getRightChild() == node) {
+                    parent.setRightChild(null);
                 }
-                if (parentNode == null) {
+                if (parent == null) {
                     rootNode = null;
                 }
                 // make the node eligible for garbage collection
                 node = null;
-                updateHeight(parentNode);
+                // updating height of parent as node is removed
+                updateHeight(parent);
+                settleViolations(parent);
             }
             // case 2 (a) : when we have a single right child
             else if (node.getLeftChild() == null && node.getRightChild() != null) {
@@ -139,6 +177,7 @@ public class AVLTree<T extends Comparable<T>> implements Tree<T> {
                 node.getRightChild().setParentNode(parent);
                 node = null;
                 updateHeight(parent);
+                settleViolations(parent);
             }
             // case 2 (b): when we have a single left child
             else if (node.getRightChild() == null && node.getLeftChild() != null) {
@@ -162,7 +201,7 @@ public class AVLTree<T extends Comparable<T>> implements Tree<T> {
                 node.getLeftChild().setParentNode(parent);
                 node = null;
                 updateHeight(parent);
-
+                settleViolations(parent);
             }
             // remove two children
             else {
@@ -178,6 +217,8 @@ public class AVLTree<T extends Comparable<T>> implements Tree<T> {
 
                 remove(data, predecessor);
 
+                // since this calls the leaf node removal,
+                // so we don't have to update the height here
             }
         }
 
@@ -216,19 +257,77 @@ public class AVLTree<T extends Comparable<T>> implements Tree<T> {
     }
 
     private void updateHeight(Node<T> node) {
+        //               5 (2)
+        //             /   \
+        //            /     \
+        //           /       \
+        //         2 (1)      7 (0)
+        //       /  \         /  \
+        //      null 4(0)  null  null
+        //      (-1) /\    (-1)  (-1)
+        //        null null
+        //        (-1)  (-1)
         node.setHeight(Math.max(height(node.getLeftChild()), height(node.getRightChild())) + 1);
     }
 
     private int height(Node<T> node) {
+        // if the node is null,
+        // we assign -1 value,
         if (node == null)
             return -1;
         return node.getHeight();
     }
 
     // balance factor to decide the left heavy or right heavy cases
+    // if balance factor is positive, then the tree is left heavy
+    // if balance factor is negative, then the tree is right heavy
     private int getBalanceFactor(Node<T> node) {
         if (node == null)
             return 0;
         return height(node.getLeftChild()) - height(node.getRightChild());
+    }
+
+    // we need to settle violations for the node inserted or deleted
+    private void settleViolations(Node<T> node) {
+        // we have to check up-to the root node
+        // it has O(log N) time running complexity
+        while (node != null) {
+            updateHeight(node);
+            settleViolationsHelper(node);
+            node = node.getParentNode();
+        }
+    }
+
+    private void settleViolationsHelper(Node<T> node) {
+        int balanceFactor = getBalanceFactor(node);
+
+        // left heavy situation if balance factor is greater than 1
+        // but it maybe a left-right heavy situation or a left-left heavy situation
+        if (balanceFactor > 1) {
+            // left right heavy situation
+            if (getBalanceFactor(node.getLeftChild()) < 0) {
+                leftRotation(node.getLeftChild());
+            }
+            // for left right heavy situation,
+            // first we do a left rotation,
+            // then a right rotation
+            // if we have left left heavy situation,
+            // then we just need to do a single right rotation
+            rightRotation(node);
+        }
+        // right heavy situation if balance factor is lesser than 1
+        // but it maybe a right-right heavy situation or a right-left heavy situation
+        if (balanceFactor < -1) {
+            // right left heavy situation
+            if (getBalanceFactor(node.getRightChild()) > 0) {
+                rightRotation(node.getRightChild());
+            }
+            // for right left heavy situation,
+            // first we do a right rotation,
+            // then a left rotation
+            // if we have right right heavy situation,
+            // then we just need to do a single left rotation
+            leftRotation(node);
+        }
     }
 }

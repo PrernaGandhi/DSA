@@ -6,7 +6,7 @@ public class Node<T> {
     private Node<T> rightChild;
     // we have to notify the parent node after removal or rotations
     private Node<T> parentNode;
-    // AVL Trees rely heavily on height of the tree;
+    // AVL Trees rely heavily on height of the tree
     private int height;
 
     public Node(T data, Node<T> parentNode) {
