@@ -6,6 +6,8 @@ public class Runner {
         System.out.println(palindrome.checkIfPalindrome("madam"));
         System.out.println(palindrome.checkIfPalindrome("madama"));
         System.out.println(palindrome.checkIfPalindrome("maddam"));
+        System.out.println(palindrome.checkIfPalindrome("aba aba"));
+        System.out.println(palindrome.checkIfPalindrome("aba  aba"));
 
     }
 }
