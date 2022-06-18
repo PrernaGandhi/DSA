@@ -3,6 +3,19 @@ package com.dsa.interview.questions.reverse_string;
 import java.util.Stack;
 
 public class ReverseString {
+    /*
+            Input : "Madam"
+            Output : "madaM"
+
+            Input : "hello"
+            Output : "olleh"
+
+            Input : ""
+            Output : ""
+
+            Input : "a"
+            Output : "aß"
+     */
 
     // O(N/2) if size of input is N
     public String reverseString(String string) {
