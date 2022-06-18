@@ -35,4 +35,26 @@ public class RemoveTwoAdjacentDuplicates {
         }
         return stringBuilder.reverse().toString();
     }
+
+    public String removeAdjacentDuplicatesUsingStackPointer(String string) {
+        int stackPointer = -1;
+        char[] chars = string.toCharArray();
+        for (Character character : chars) {
+            if (stackPointer == -1 || chars[stackPointer] != character) {
+                stackPointer++;
+                chars[stackPointer] = character;
+            } else if (chars[stackPointer] == character) {
+                stackPointer--;
+            }
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        int i = 0;
+        while (i <= stackPointer) {
+            stringBuilder.append(chars[i]);
+            i++;
+        }
+        return stringBuilder.toString();
+    }
+
+
 }

@@ -9,5 +9,12 @@ public class Runner {
         System.out.println(removeTwoAdjacentDuplicates.removeAdjacentDuplicates("aaa"));
         System.out.println(removeTwoAdjacentDuplicates.removeAdjacentDuplicates("aaabccddd"));
         System.out.println(removeTwoAdjacentDuplicates.removeAdjacentDuplicates("mississippi"));
+        System.out.println("----------------Using in-place stack----------------------");
+        System.out.println(removeTwoAdjacentDuplicates.removeAdjacentDuplicatesUsingStackPointer("aab"));
+        System.out.println(removeTwoAdjacentDuplicates.removeAdjacentDuplicatesUsingStackPointer("aa"));
+        System.out.println(removeTwoAdjacentDuplicates.removeAdjacentDuplicatesUsingStackPointer("baab"));
+        System.out.println(removeTwoAdjacentDuplicates.removeAdjacentDuplicatesUsingStackPointer("aaa"));
+        System.out.println(removeTwoAdjacentDuplicates.removeAdjacentDuplicatesUsingStackPointer("aaabccddd"));
+        System.out.println(removeTwoAdjacentDuplicates.removeAdjacentDuplicatesUsingStackPointer("mississippi"));
     }
 }
