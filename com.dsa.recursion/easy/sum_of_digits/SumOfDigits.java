@@ -1,4 +1,4 @@
-package sum_of_digits;
+package easy.sum_of_digits;
 
 public class SumOfDigits {
     public int calculate(int number) {

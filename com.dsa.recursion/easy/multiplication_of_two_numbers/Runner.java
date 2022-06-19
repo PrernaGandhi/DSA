@@ -1,4 +1,4 @@
-package multiplication_of_two_numbers;
+package easy.multiplication_of_two_numbers;
 
 public class Runner {
     public static void main(String[] args) {

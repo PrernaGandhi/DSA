@@ -1,4 +1,4 @@
-package multiplication_of_two_numbers;
+package easy.multiplication_of_two_numbers;
 
 /*
     We need to multiply two numbers, but we can't use the multiply operator

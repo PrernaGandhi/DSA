@@ -1,4 +1,4 @@
-package euclidean_algorithm;
+package easy.euclidean_algorithm;
 
 public class Runner {
     public static void main(String[] args) {

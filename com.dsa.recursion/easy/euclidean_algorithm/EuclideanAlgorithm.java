@@ -1,4 +1,4 @@
-package euclidean_algorithm;
+package easy.euclidean_algorithm;
 
 /*
     Euclidean Algorithm : To find greatest common divisor(GCD) of two numbers

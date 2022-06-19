@@ -1,4 +1,4 @@
-package power;
+package easy.power;
 
 /*
         Calculate x3 - 5*5*5 = 125

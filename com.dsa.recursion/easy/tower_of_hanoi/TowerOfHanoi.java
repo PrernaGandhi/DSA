@@ -1,4 +1,4 @@
-package tower_of_hanoi;
+package easy.tower_of_hanoi;
 
 /*
 

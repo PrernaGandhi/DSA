@@ -1,4 +1,4 @@
-package fibonacci;
+package easy.fibonacci;
 
 public class Runner {
     public static void main(String[] args) {

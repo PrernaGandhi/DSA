@@ -1,4 +1,4 @@
-package tower_of_hanoi;
+package easy.tower_of_hanoi;
 
 public class Runner {
     public static void main(String[] args) {

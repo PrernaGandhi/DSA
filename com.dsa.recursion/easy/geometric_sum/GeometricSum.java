@@ -1,4 +1,4 @@
-package geometric_sum;
+package easy.geometric_sum;
 
 public class GeometricSum {
     public double calculate(int k) {

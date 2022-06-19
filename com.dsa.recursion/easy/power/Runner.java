@@ -1,4 +1,4 @@
-package power;
+package easy.power;
 
 public class Runner {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package count_digits;
+package easy.count_digits;
 
 public class CountDigits {
     public int count(int number) {

@@ -1,4 +1,4 @@
-package geometric_sum;
+package easy.geometric_sum;
 
 public class Runner {
     public static void main(String[] args) {

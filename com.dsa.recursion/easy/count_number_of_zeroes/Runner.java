@@ -1,4 +1,4 @@
-package count_number_of_zeroes;
+package easy.count_number_of_zeroes;
 
 public class Runner {
     public static void main(String[] args) {

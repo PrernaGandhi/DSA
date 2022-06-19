@@ -1,4 +1,4 @@
-package print_numbers;
+package easy.print_numbers;
 
 public class PrintNumbers {
     public void ascending(int n) {

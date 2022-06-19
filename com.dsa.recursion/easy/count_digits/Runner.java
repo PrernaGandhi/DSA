@@ -1,4 +1,4 @@
-package count_digits;
+package easy.count_digits;
 
 public class Runner {
     public static void main(String[] args) {
