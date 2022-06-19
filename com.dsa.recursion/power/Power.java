@@ -1,4 +1,4 @@
-package com.dsa.recursion.power;
+package power;
 
 /*
         Calculate x3 - 5*5*5 = 125

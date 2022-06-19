@@ -1,4 +1,4 @@
-package com.dsa.recursion.power;
+package power;
 
 public class Runner {
     public static void main(String[] args) {
