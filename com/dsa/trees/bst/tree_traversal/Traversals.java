@@ -5,6 +5,7 @@ import com.dsa.trees.bst.Node;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Traversals<T> {
     //           (12)
@@ -78,6 +79,33 @@ public class Traversals<T> {
                 queue.add(current.getLeftChild());
             if (current.getRightChild() != null)
                 queue.add(current.getRightChild());
+        }
+    }
+
+    public void reverseLevelOrder(Node<T> node) {
+        if (node == null)
+            return;
+        Queue<Node<T>> queue = new LinkedList<>();
+        Stack<Node<T>> stack = new Stack<>();
+        queue.add(node);
+        node.setVisited(true);
+        while (!queue.isEmpty()) {
+            Node<T> current = queue.poll();
+            // store the value in stack
+            stack.push(current);
+            if (current.getLeftChild() != null) {
+                queue.add(current.getLeftChild());
+            }
+            if (current.getRightChild() != null) {
+                queue.add(current.getRightChild());
+            }
+        }
+
+        // level order traversal stored in stack
+        // so when it is popped out,
+        // it is printed in reverse order
+        while (!stack.isEmpty()) {
+            System.out.print(stack.pop() + " ");
         }
     }
 

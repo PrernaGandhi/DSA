@@ -26,6 +26,9 @@ public class Runner {
         System.out.println();
         System.out.println("Level order: ");
         traversals.levelOrder(bst.getRootNode());
+        System.out.println();
+        System.out.println("Reverse Level order: ");
+        traversals.reverseLevelOrder(bst.getRootNode());
 
     }
 }
