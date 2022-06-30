@@ -29,6 +29,9 @@ public class Runner {
         System.out.println();
         System.out.println("Reverse Level order: ");
         traversals.reverseLevelOrder(bst.getRootNode());
+        System.out.println();
+        System.out.println("ZigZag Level order: ");
+        traversals.zigZaglevelOrder(bst.getRootNode());
 
     }
 }

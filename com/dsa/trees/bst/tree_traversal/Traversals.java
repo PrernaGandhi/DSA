@@ -82,6 +82,61 @@ public class Traversals<T> {
         }
     }
 
+    /*
+    //           (12)
+    //          /    \
+    //        (4)    (20)
+    //        / \    /  \
+    //      (1) (8)(16) (27)
+
+           Zig zag level order traversal : 12 20 4 1 8 16 27
+     */
+    public void zigZaglevelOrder(Node<T> node) {
+        if (node == null)
+            return;
+        Queue<Node<T>> queue = new LinkedList<>();
+        queue.add(node);
+        node.setVisited(true);
+        boolean isLeftToRight = true;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            Node<T> current = queue.poll();
+            // stack will store elements of same level
+            // and then pop out in reverse order
+            Stack<Node<T>> stack = new Stack<>();
+            stack.push(current);
+            while (size-- > 0) {
+                // polling all elements of current level
+                // and pushing into stack
+                current = queue.poll();
+                if (current != null) {
+                    stack.push(current);
+                }
+            }
+            while (!stack.isEmpty()) {
+                current = stack.pop();
+                System.out.print(current + " ");
+                // we store elements based on the
+                // orientation for all the
+                // elements in the given level
+                if (isLeftToRight) {
+                    if (current.getLeftChild() != null)
+                        queue.add(current.getLeftChild());
+                    if (current.getRightChild() != null)
+                        queue.add(current.getRightChild());
+                } else {
+                    if (current.getRightChild() != null)
+                        queue.add(current.getRightChild());
+
+                    if (current.getLeftChild() != null) {
+                        queue.add(current.getLeftChild());
+                    }
+                }
+            }
+            isLeftToRight = !isLeftToRight;
+        }
+    }
+
     public void reverseLevelOrder(Node<T> node) {
         if (node == null)
             return;
