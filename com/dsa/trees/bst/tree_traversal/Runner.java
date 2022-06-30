@@ -41,6 +41,9 @@ public class Runner {
         System.out.println();
         System.out.println("ZigZag Level order recursive: ");
         traversals.zigZaglevelOrderTraversalUsingHeight(bst.getRootNode());
+        System.out.println();
+        System.out.println("Vertical order recursive: ");
+        traversals.verticalOrderTraversalUsingHeight(bst.getRootNode());
 
     }
 }

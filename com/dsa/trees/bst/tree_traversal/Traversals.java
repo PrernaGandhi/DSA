@@ -4,9 +4,7 @@ package com.dsa.trees.bst.tree_traversal;
 import com.dsa.trees.bst.Node;
 import com.dsa.trees.bst.height_of_bst.HeightOfBST;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class Traversals<T> {
     //           (12)
@@ -173,6 +171,37 @@ public class Traversals<T> {
         for (int i = 1; i <= height; i++) {
             levelOrder(root, i);
         }
+    }
+
+    public void verticalOrderTraversalUsingHeight(Node<T> root) {
+        if (root == null) return;
+
+        HeightOfBST heightOfBST = new HeightOfBST();
+        int height = heightOfBST.height(root);
+        TreeMap<Integer, Set<Node>> treeMap = new TreeMap<>();
+        for (int i = 1; i <= height; i++) {
+            levelOrder(root, i, 0, treeMap);
+        }
+
+        for (Map.Entry<Integer, Set<Node>> m : treeMap.entrySet()) {
+            System.out.print(m.getValue() + " ");
+        }
+    }
+
+    private void levelOrder(Node<T> root, int height, int hd, TreeMap<Integer, Set<Node>> treeMap) {
+        if (root == null) {
+            return;
+        }
+        Set<Node> nodes = treeMap.get(hd);
+
+        if (nodes == null) {
+            nodes = new HashSet<>();
+        }
+        nodes.add(root);
+        treeMap.put(hd, nodes);
+        levelOrder(root.getLeftChild(), height - 1, hd - 1, treeMap);
+        levelOrder(root.getRightChild(), height - 1, hd + 1, treeMap);
+
     }
 
     public void zigZaglevelOrderTraversalUsingHeight(Node<T> root) {
