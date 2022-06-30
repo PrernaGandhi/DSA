@@ -27,11 +27,20 @@ public class Runner {
         System.out.println("Level order: ");
         traversals.levelOrder(bst.getRootNode());
         System.out.println();
+        System.out.println("Level order recursive: ");
+        traversals.levelOrderTraversalUsingHeight(bst.getRootNode());
+        System.out.println();
         System.out.println("Reverse Level order: ");
         traversals.reverseLevelOrder(bst.getRootNode());
         System.out.println();
+        System.out.println("Reverse Level order recursive: ");
+        traversals.reverseLevelOrderTraversalUsingHeight(bst.getRootNode());
+        System.out.println();
         System.out.println("ZigZag Level order: ");
         traversals.zigZaglevelOrder(bst.getRootNode());
+        System.out.println();
+        System.out.println("ZigZag Level order recursive: ");
+        traversals.zigZaglevelOrderTraversalUsingHeight(bst.getRootNode());
 
     }
 }

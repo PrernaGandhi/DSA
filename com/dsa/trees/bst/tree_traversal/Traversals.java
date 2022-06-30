@@ -2,6 +2,7 @@ package com.dsa.trees.bst.tree_traversal;
 
 
 import com.dsa.trees.bst.Node;
+import com.dsa.trees.bst.height_of_bst.HeightOfBST;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -148,11 +149,11 @@ public class Traversals<T> {
             Node<T> current = queue.poll();
             // store the value in stack
             stack.push(current);
-            if (current.getLeftChild() != null) {
-                queue.add(current.getLeftChild());
-            }
             if (current.getRightChild() != null) {
                 queue.add(current.getRightChild());
+            }
+            if (current.getLeftChild() != null) {
+                queue.add(current.getLeftChild());
             }
         }
 
@@ -164,4 +165,65 @@ public class Traversals<T> {
         }
     }
 
+    public void levelOrderTraversalUsingHeight(Node<T> root) {
+        if (root == null) return;
+
+        HeightOfBST heightOfBST = new HeightOfBST();
+        int height = heightOfBST.height(root);
+        for (int i = 1; i <= height; i++) {
+            levelOrder(root, i);
+        }
+    }
+
+    public void zigZaglevelOrderTraversalUsingHeight(Node<T> root) {
+        if (root == null) return;
+
+        HeightOfBST heightOfBST = new HeightOfBST();
+        int height = heightOfBST.height(root);
+        boolean isLeftToRight = true;
+        for (int i = 1; i <= height; i++) {
+            levelOrder(root, i, isLeftToRight);
+            isLeftToRight = !isLeftToRight;
+        }
+    }
+
+    private void levelOrder(Node<T> root, int height, boolean isLeftToRight) {
+        if (root == null) {
+            return;
+        }
+        if (height == 1) {
+            System.out.print(root.getData() + " ");
+        } else if (height > 1) {
+            if (isLeftToRight) {
+                levelOrder(root.getLeftChild(), height - 1);
+                levelOrder(root.getRightChild(), height - 1);
+            } else {
+                levelOrder(root.getRightChild(), height - 1);
+                levelOrder(root.getLeftChild(), height - 1);
+            }
+        }
+
+    }
+
+    public void reverseLevelOrderTraversalUsingHeight(Node<T> root) {
+        if (root == null) return;
+
+        HeightOfBST heightOfBST = new HeightOfBST();
+        int height = heightOfBST.height(root);
+        for (int i = height; i > 0; i--) {
+            levelOrder(root, i);
+        }
+    }
+
+    private void levelOrder(Node<T> root, int height) {
+        if (root == null) {
+            return;
+        }
+        if (height == 1) {
+            System.out.print(root.getData() + " ");
+        } else if (height > 1) {
+            levelOrder(root.getLeftChild(), height - 1);
+            levelOrder(root.getRightChild(), height - 1);
+        }
+    }
 }
