@@ -170,6 +170,7 @@ public class Traversals<T> {
         int height = heightOfBST.height(root);
         for (int i = 1; i <= height; i++) {
             levelOrder(root, i);
+            System.out.println();
         }
     }
 
