@@ -10,10 +10,12 @@ public class Runner {
         int[] arr = new int[n + 1];
         Arrays.fill(arr, -1);
         System.out.println(minimumStepsToOne.minimumStepsToOneMemoized(n, arr));
+        System.out.println(minimumStepsToOne.minimumStepsToOneBottomUp(n));
         n = 10;
         System.out.println(minimumStepsToOne.minimumStepsToOne(n));
         arr = new int[n + 1];
         Arrays.fill(arr, -1);
         System.out.println(minimumStepsToOne.minimumStepsToOneMemoized(n, arr));
+        System.out.println(minimumStepsToOne.minimumStepsToOneBottomUp(n));
     }
 }

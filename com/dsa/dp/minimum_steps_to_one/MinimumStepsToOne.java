@@ -78,4 +78,26 @@ public class MinimumStepsToOne {
         arr[n] = output;
         return output;
     }
+
+    public int minimumStepsToOneBottomUp(int n) {
+        if (n == 1) {
+            return 0;
+        }
+        int[] arr = new int[n + 1];
+        for (int i = 2; i < arr.length; i++) {
+
+            int x = arr[i - 1];
+            int y = Integer.MAX_VALUE;
+            if (i % 2 == 0) {
+                y = arr[i / 2];
+            }
+
+            int z = Integer.MAX_VALUE;
+            if (i % 3 == 0) {
+                z = arr[i / 3];
+            }
+            arr[i] = 1 + Math.min(x, Math.min(y, z));
+        }
+        return arr[n];
+    }
 }
