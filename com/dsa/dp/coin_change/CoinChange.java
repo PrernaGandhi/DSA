@@ -1,5 +1,8 @@
 package com.dsa.dp.coin_change;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /*
     we have coins of different denominations
     we can assume we have infinite coins of each kind
@@ -54,5 +57,30 @@ public class CoinChange {
 
     public int minCoins(int[] coins, int targetAmount) {
         return minCoinss(coins, targetAmount);
+    }
+
+    private int minCoinssDP(int[] coins, int targetAmount, Map<Integer, Integer> map) {
+        if (targetAmount == 0) {
+            return 0;
+        }
+        if (map.containsKey(targetAmount)) {
+            return map.get(targetAmount);
+        }
+        int result = Integer.MAX_VALUE;
+        for (int coin : coins) {
+            if (targetAmount - coin >= 0) {
+                int val = minCoinssDP(coins, targetAmount - coin, map);
+                if (result > val) {
+                    result = 1 + val;
+                }
+            }
+        }
+        map.put(targetAmount, result);
+        return result != Integer.MAX_VALUE ? result : -1;
+    }
+
+    public int minCoinsDP(int[] coins, int targetAmount) {
+        Map<Integer, Integer> map = new HashMap<>();
+        return minCoinssDP(coins, targetAmount, map);
     }
 }
