@@ -1,5 +1,8 @@
 package com.dsa.dp.edit_distance;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /*
         word 1 : "horse"
         word 2 : "ros"
@@ -81,5 +84,33 @@ public class EditDistance {
 
     public int noOfSteps(String word1, String word2) {
         return noOfSteps(word1, 0, word2, 0);
+    }
+
+    private int noOfStepsDP(String word1, int i, String word2, int j, Map<String, Integer> map) {
+        if (i == word1.length() || j == word2.length()) {
+            return word1.length() - i + word2.length() - j;
+        }
+        String key = i + " " + j;
+        if (map.containsKey(key)) {
+            return map.get(key);
+        }
+        if (word1.charAt(i) == word2.charAt(j)) {
+            int res = noOfStepsDP(word1, i + 1, word2, j + 1, map);
+            map.put(key, res);
+            return res;
+        } else {
+            int insert = noOfStepsDP(word1, i, word2, j + 1, map);
+            int delete = noOfStepsDP(word1, i + 1, word2, j, map);
+            int replace = noOfStepsDP(word1, i + 1, word2, j + 1, map);
+            int res = 1 + Math.min(insert, Math.min(delete, replace));
+            map.put(key, res);
+            return res;
+        }
+
+    }
+
+    public int noOfStepsDP(String word1, String word2) {
+        Map<String, Integer> map = new HashMap<>();
+        return noOfStepsDP(word1, 0, word2, 0, map);
     }
 }
