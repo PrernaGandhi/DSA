@@ -74,8 +74,11 @@ public class ClimbingStairs {
     }
 
     private int countLongestPath(int n, int currentStep) {
-        if (currentStep >= n) {
+        if (currentStep == n) {
             return 0;
+        }
+        if (currentStep > n) {
+            return -1;
         }
         int choice1 = 1 + countLongestPath(n, currentStep + 1);
         int choice2 = 1 + countLongestPath(n, currentStep + 2);
@@ -87,8 +90,11 @@ public class ClimbingStairs {
     }
 
     private int countLongestPathDP(int n, int currentStep, Map<Integer, Integer> map) {
-        if (currentStep >= n) {
+        if (currentStep == n) {
             return 0;
+        }
+        if (currentStep > n) {
+            return -1;
         }
         if (map.containsKey(currentStep)) {
             return map.get(currentStep);
@@ -106,8 +112,11 @@ public class ClimbingStairs {
     }
 
     private int countShortestPath(int n, int currentStep) {
-        if (currentStep >= n) {
+        if (currentStep == n) {
             return 0;
+        }
+        if (currentStep > n) {
+            return currentStep;
         }
         int choice1 = 1 + countShortestPath(n, currentStep + 1);
         int choice2 = 1 + countShortestPath(n, currentStep + 2);
@@ -119,8 +128,11 @@ public class ClimbingStairs {
     }
 
     private int countShortestPathDP(int n, int currentStep, Map<Integer, Integer> map) {
-        if (currentStep >= n) {
+        if (currentStep == n) {
             return 0;
+        }
+        if (currentStep > n) {
+            return currentStep;
         }
         if (map.containsKey(currentStep)) {
             return map.get(currentStep);
