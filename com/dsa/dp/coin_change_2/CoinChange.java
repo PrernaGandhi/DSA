@@ -20,6 +20,8 @@ import java.util.Map;
     1+1+2+1
     2+2+1
     5
+    Now this would be a combination question, as the order doesn't matter
+
 
     if target amount equals 0, we have found a solution
 
