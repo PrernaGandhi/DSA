@@ -64,6 +64,18 @@ package com.dsa.dp.grid_path;
 
                    so base case ==> if m==1 || n==1 , return 1
 
+                 __ __           __        __ __
+                |__|__|    =>   |__|    + |__|__|    => 2
+                |__|__|         |__|
+
+
+                __ __ __        __ __     __ __ __
+               |__|__|__|  =>  |__|__| + |__|__|__|
+               |__|__|__|      |__|__|
+
+                          =>     2 + 1
+                          =>     2 + 1
+                          =>     3
 
             2.   Play with examples and visualize
  */
@@ -76,6 +88,5 @@ public class GridPath {
 
             return countPaths(m - 1, n) + countPaths(m, n - 1);
         }
-
     }
 }
