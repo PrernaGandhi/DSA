@@ -4,6 +4,10 @@ import com.dsa.trees.bst.Node;
 
 /*
         Check if tree is a valid BST
+        A BST is valid if root node is
+        greater than element to the left
+        and root node is lesser than
+        element to the right
 
  */
 public class ValidBST {
