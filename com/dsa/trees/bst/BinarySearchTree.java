@@ -90,9 +90,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
                 node = null;
             }
             // case 2 (a) : when we have a single right child
-            //              2                       10
-            //               \                     /
-            //                5                   5
+            //              2                       10            5          5
+            //               \                     /             /            \
+            //                5                   5             2              7
             //                 \                    \
             //                  10                   7
 
@@ -123,6 +123,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
                 node = null;
             }
             // case 2 (b): when we have a single left child
+            //              10               10            5          5
+            //            /                 /             /            \
+            //           5                 5             2              7
+            //            \               /
+            //             7             2
             else if (node.getRightChild() == null && node.getLeftChild() != null) {
                 System.out.println("Removing a node with single left child ..... ");
 
@@ -168,8 +173,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
             //          3      8
             //         / \    / \
             //        2   4  6  10
-            //                \
-            //                 7
+            //                \   \
+            //                 7  12
             //                  \
             //                   9
             // now remove leaf node 9
