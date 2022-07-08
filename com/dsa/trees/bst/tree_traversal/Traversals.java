@@ -16,7 +16,7 @@ public class Traversals<T> {
     //  inorder :   1 4 8 12 16 20 27
     //  preorder:   12 4 1 8 20 16 27
     //  postorder:  1 8 4 16 27 20 12
-    //  levelorder: 12 4 20 1 8 16 27
+    //  level-order: 12 4 20 1 8 16 27
 
     public void inorder(Node<T> node) {
         if (node == null) {
@@ -65,6 +65,7 @@ public class Traversals<T> {
     }
 
     // matches with implementation of bfs
+    // for level order height is the most important
     public void levelOrder(Node<T> node) {
         if (node == null)
             return;
@@ -136,6 +137,15 @@ public class Traversals<T> {
         }
     }
 
+    /*
+    //           (12)
+    //          /    \
+    //        (4)    (20)
+    //        / \    /  \
+    //      (1) (8)(16) (27)
+
+        reverse level order - 1 8 16 27 4 20 12
+     */
     public void reverseLevelOrder(Node<T> node) {
         if (node == null)
             return;
@@ -174,6 +184,29 @@ public class Traversals<T> {
         }
     }
 
+    /*             0
+    //           (12)
+    //          /    \
+    //     -1 (4)    (20) +1
+    //        / \    /  \
+    //      (1) (8)(16) (27)
+            -2   0   0   +2
+            root node will have horizontal distance 0
+            elements to the left will be -1
+            elements to the right will be +1
+
+        Vertical order traversal - [1] [4] [8, 12, 16] [20] [27]
+
+        Horizontal distance              Elements
+                -2                          [1]
+                -1                          [4]
+                 0                      [8, 12, 16]
+                 1                          [20]
+                 2                          [27]
+
+
+        For vertical order traversal, horizontal distance is important
+     */
     public void verticalOrderTraversalUsingHeight(Node<T> root) {
         if (root == null) return;
 
@@ -181,7 +214,7 @@ public class Traversals<T> {
         int height = heightOfBST.height(root);
         TreeMap<Integer, Set<Node>> treeMap = new TreeMap<>();
         for (int i = 1; i <= height; i++) {
-            levelOrder(root, i, 0, treeMap);
+            levelOrder(root, 0, treeMap);
         }
 
         for (Map.Entry<Integer, Set<Node>> m : treeMap.entrySet()) {
@@ -189,7 +222,7 @@ public class Traversals<T> {
         }
     }
 
-    private void levelOrder(Node<T> root, int height, int hd, TreeMap<Integer, Set<Node>> treeMap) {
+    private void levelOrder(Node<T> root, int hd, TreeMap<Integer, Set<Node>> treeMap) {
         if (root == null) {
             return;
         }
@@ -200,8 +233,8 @@ public class Traversals<T> {
         }
         nodes.add(root);
         treeMap.put(hd, nodes);
-        levelOrder(root.getLeftChild(), height - 1, hd - 1, treeMap);
-        levelOrder(root.getRightChild(), height - 1, hd + 1, treeMap);
+        levelOrder(root.getLeftChild(), hd - 1, treeMap);
+        levelOrder(root.getRightChild(), hd + 1, treeMap);
 
     }
 
