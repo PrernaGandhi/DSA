@@ -18,10 +18,13 @@ public class Runner {
         System.out.println(leastCommonAncestor.leastCommonAncestor(10, 14, binarySearchTree.getRootNode()));
         System.out.println(leastCommonAncestor.leastCommonAncestor(8, 14, binarySearchTree.getRootNode()));
         System.out.println(leastCommonAncestor.leastCommonAncestor(14, 8, binarySearchTree.getRootNode()));
+        System.out.println(leastCommonAncestor.leastCommonAncestor(4, 14, binarySearchTree.getRootNode()));
 
         System.out.println();
+
         System.out.println(leastCommonAncestor.leastCommonAncestorWithoutSet(10, 14, binarySearchTree.getRootNode()));
         System.out.println(leastCommonAncestor.leastCommonAncestorWithoutSet(8, 14, binarySearchTree.getRootNode()));
         System.out.println(leastCommonAncestor.leastCommonAncestorWithoutSet(14, 8, binarySearchTree.getRootNode()));
+        System.out.println(leastCommonAncestor.leastCommonAncestorWithoutSet(4, 14, binarySearchTree.getRootNode()));
     }
 }
