@@ -18,7 +18,8 @@ public class Runner {
         Traversals<Integer> traversals = new Traversals<>();
         traversals.levelOrderTraversalUsingHeight(bst.getRootNode());
         DiameterOfTree diameterOfTree = new DiameterOfTree();
-        System.out.println(diameterOfTree.diameter(bst.getRootNode()));
+        System.out.println("Diameter of Tree : " + diameterOfTree.diameter(bst.getRootNode()));
+        System.out.println("Height of Tree : " + diameterOfTree.height(bst.getRootNode()));
 
     }
 }

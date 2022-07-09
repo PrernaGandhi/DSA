@@ -4,6 +4,10 @@ import com.dsa.trees.bst.Node;
 
 /*
         Diameter of tree :
+
+        Diameter means the number of nodes in the
+        longest path between leaf nodes nodes of a tree.
+        Diameter may or may not pass through the root nos
                  o
                /   \
               /     \
@@ -16,8 +20,35 @@ import com.dsa.trees.bst.Node;
         Height = 1 + max(leftHeight, rightHeight)
         Diameter = max(leftHeight + rightHeight, leftDiameter, rightDiameter)
 
-        Time complexity = O(N)
+                    o                                                       o
+                 /     \                                                /       \
+               o         o                                            o           o
+             /   \          \                                      /     \
+            o     o          o                                   o         o
+                /   \          \                              /    \         \
+               o     @          o                            o      o         o
+                              /   \                               /         /   \
+                             o     @                             o         o     o
+                                                                  \             /
+                                                                   @           @
 
+          Diameter passing through                          Diameter not passing through
+          he root node                                      the root node
+          -- 9                                              -- 9
+
+        Time complexity = O(N)
+                    20
+                 /     \
+               15       22
+             /   \
+           14      16
+         /            \
+       13               17
+    /                     \
+  12                        18
+
+        height - 5
+        diameter - 6
  */
 class Pair {
     int height;
@@ -52,6 +83,11 @@ public class DiameterOfTree {
     public int diameter(Node<Integer> root) {
         Pair pair = heightDiameter(root);
         return pair.diameter;
+    }
+
+    public int height(Node<Integer> root) {
+        Pair pair = heightDiameter(root);
+        return pair.height;
     }
 
 }
