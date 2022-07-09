@@ -15,6 +15,8 @@ import com.dsa.trees.bst.Node;
             as soon as the count == k,
             we get the k th smallest element
             Time complexity : O(k)
+            in worst case, time complexity
+            would be O(N) if k = N
             Space complexity : O(1)
 
  */
