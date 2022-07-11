@@ -79,7 +79,9 @@ public class KruskalAlgorithm {
     }
 
     public void makeSet(Vertex vertex) {
-        connectedComponents.put(vertex, Arrays.asList(vertex));
+        ArrayList<Vertex> list = new ArrayList<>();
+        list.add(vertex);
+        connectedComponents.put(vertex, list);
         vertex.setParent(vertex);
     }
 
@@ -90,16 +92,16 @@ public class KruskalAlgorithm {
     public void union(Vertex v1, Vertex v2) {
         // that means they are not in the same
         // connected components
-        Vertex v = v2.getParent();
-        List<Vertex> list = connectedComponents.get(v);
-        Vertex parent = v1.getParent();
-        list.forEach(vertex -> vertex.setParent(parent));
-        List<Vertex> vertexList = connectedComponents.get(parent);
+        Vertex parentOfV2 = v2.getParent();
+        List<Vertex> connectedComponentsOfV2 = connectedComponents.get(parentOfV2);
+        Vertex parentOfV1 = v1.getParent();
+        connectedComponentsOfV2.forEach(vertex -> vertex.setParent(parentOfV1));
+        List<Vertex> connectedComponentsOfV1 = connectedComponents.get(parentOfV1);
         List<Vertex> resultList = new ArrayList<>();
-        resultList.addAll(list);
-        resultList.addAll(vertexList);
-        connectedComponents.remove(v);
-        connectedComponents.put(parent, resultList);
+        resultList.addAll(connectedComponentsOfV2);
+        resultList.addAll(connectedComponentsOfV1);
+        connectedComponents.remove(parentOfV2);
+        connectedComponents.put(parentOfV1, resultList);
     }
 
     public boolean isConnected(Vertex v1, Vertex v2) {
