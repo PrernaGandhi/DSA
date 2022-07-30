@@ -17,7 +17,7 @@ package com.dsa.interview.questions.spiral_order_matrix;
 
       Approach : we need 4 pointers, startRow, startColumn, endRow, endColumn
 
-      sr, sc                er
+      sr, sc                ec
        _____________________
       |    _____________    |
       |   |             |   |
@@ -26,7 +26,7 @@ package com.dsa.interview.questions.spiral_order_matrix;
       |   |             |   |
       |   |_____________|   |
       |_____________________|
-     ec
+     er
 
 
      we need to print the start row, then start column,

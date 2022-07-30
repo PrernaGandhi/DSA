@@ -21,6 +21,8 @@ public class LargestSumSubArray {
 
         current sum = max(8, 2+8)
         max sum = 9
+
+        Kandane algorithm
      */
     public int solve(int[] array) {
         int currentSum = 0;
