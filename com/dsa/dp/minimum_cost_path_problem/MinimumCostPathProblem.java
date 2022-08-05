@@ -152,12 +152,12 @@ public class MinimumCostPathProblem {
         int[][] dp = new int[m][n];
         dp[0][0] = matrix[0][0];
         // fill the first row
-        for (int i = 1; i < m; i++) {
-            dp[i][0] = dp[i - 1][0] + matrix[i][0];
-        }
-        // fill the first column
         for (int j = 1; j < n; j++) {
             dp[0][j] = dp[0][j - 1] + matrix[0][j];
+        }
+        // fill the first column
+        for (int i = 1; i < m; i++) {
+            dp[i][0] = dp[i - 1][0] + matrix[i][0];
         }
         for (int i = 1; i < m; i++) {
             for (int j = 1; j < n; j++) {
