@@ -1,6 +1,8 @@
 package com.dsa.coursera_algo_part_1.queues.linked_list;
 
 import com.dsa.coursera_algo_part_1.queues.Queue;
+import com.dsa.coursera_algo_part_1.queues.iterators.LinkedListQueueIterator;
+import java.util.Iterator;
 
 /*
     We are implementing queue using linked list
@@ -73,7 +75,7 @@ import com.dsa.coursera_algo_part_1.queues.Queue;
     isEmpty    :   O(1)
 
  */
-public class LinkedListBasedQueue<T> implements Queue<T> {
+public class LinkedListBasedQueue<T> implements Queue<T>, Iterable<T> {
 
     private Node<T> root;
     private Node<T> lastNode;
@@ -113,5 +115,10 @@ public class LinkedListBasedQueue<T> implements Queue<T> {
             temp = temp.next;
         }
         System.out.println();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new LinkedListQueueIterator<>(root);
     }
 }
