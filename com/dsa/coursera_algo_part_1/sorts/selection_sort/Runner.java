@@ -10,6 +10,14 @@ public class Runner {
         Integer[] elements = {7, 10, 5, 3, 8, 4, 2, 9, 6};
         elements = sort.sort(elements);
         Arrays.stream(elements).forEach(e -> System.out.print(e + "\t"));
+
+        System.out.println();
+
+        Sort<String> sortStrings = new SelectionSort<>();
+        String[] strings = {"S","O","R","T","E","X","A","M","P","L","E"};
+        strings = sortStrings.sort(strings);
+        Arrays.stream(strings).forEach(e -> System.out.print(e + "\t"));
+
     }
 
 }

@@ -11,6 +11,14 @@ public class Runner {
         elements = sort.sort(elements);
         Arrays.stream(elements).forEach(e -> System.out.print(e + "\t"));
 
+        System.out.println();
+
+        Sort<String> sortStrings = new InsertionSort<>();
+        String[] strings = {"S","O","R","T","E","X","A","M","P","L","E"};
+        strings = sortStrings.sort(strings);
+        Arrays.stream(strings).forEach(e -> System.out.print(e + "\t"));
+
+
     }
 
 }
