@@ -704,3 +704,66 @@
                            |   |                   |
                           j-h  j                  h,i
 
+##### **MergeSort :**
+
+    MergeSort involves splitting the array into half,
+    sort the individual halves and merge them in sorted order
+
+    M   E   R   G   E   S   O   R   T
+
+    sort(MERG)
+    sort(ESORT)
+
+    E   G   M   R       E   O   R   S   T
+
+    merge()
+
+    E   G   M   R       E   O   R   S   T
+    ^                   ^
+    |                   |
+    i                   j
+
+    arr -> E
+
+    E   G   M   R       E   O   R   S   T
+        ^               ^
+        |               |
+        i               j
+
+    arr -> E E
+    E   G   M   R       E   O   R   S   T
+    ^                   ^
+    |                   |
+    i                   j
+    
+    arr -> E E G
+    E   G   M   R       E   O   R   S   T
+    ^               ^
+    |               |
+    i               j
+    
+    arr -> E E G M
+    E   G   M   R       E   O   R   S   T
+    ^           ^
+    |           |
+    i           j
+    
+    arr -> E E G M O
+    E   G   M   R       E   O   R   S   T
+    ^               ^
+    |               |
+    i               j
+    
+    arr -> E E G M O R
+    E   G   M   R       E   O   R   S   T
+    ^             ^
+    |             |
+    i             j
+    since first half array is exhausted
+    
+        copy all elements from second half of array to the output array
+    
+    arr -> E E G M O R R S T
+    
+
+
