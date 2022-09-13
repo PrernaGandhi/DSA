@@ -764,6 +764,59 @@
         copy all elements from second half of array to the output array
     
     arr -> E E G M O R R S T
-    
+
+##### **Quick Sort :**
+    Quicksort is implemented by first partitioning the array in such a way that
+    all elements to the left of it is smaller than the pivot element,
+    and all elements to the right of it is greater than the pivot element
+
+    Example:
+        S   O   R   T   E   X   A   M   P   L   E
+        ^   ^                                   ^
+        |   |                                   |
+       low  i                                   j
+
+        S   O   R   T   E   X   A   M   P   L   E
+        ^           ^                           ^
+        |           |                           |
+       low          i                           j
+
+       At this point element at i is greater than element at low
+       and element at j is lower than element at low so we swap elements
+       at i and j
+
+        S   O   R   E   E   X   A   M   P   L   T
+        ^           ^                           ^
+        |           |                           |
+       low          i                           j
+
+        S   O   R   E   E   X   A   M   P   L   T
+        ^                   ^               ^
+        |                   |               |
+       low                  i               j
+       At this point element at i is greater than element at low
+       and element at j is lower than element at low so we swap elements
+       at i and j
+
+        S   O   R   E   E   L   A   M   P   X   T
+        ^                   ^               ^
+        |                   |               |
+       low                  i               j
+        S   O   R   E   E   L   A   M   P   X   T
+        ^                               ^   ^
+        |                               |   |
+       low                              j   i
+
+      At this point i crossed j so we swap j and low
+        P   O   R   E   E   L   A   M   S   X   T
+        ^                               ^   ^
+        |                               |   |
+       low                              j   i
+
+       Now elements before S are smaller than S
+       and elements after S are greater than S
+
+       Now we sort the individual halves and the array is sorted
+
 
 
