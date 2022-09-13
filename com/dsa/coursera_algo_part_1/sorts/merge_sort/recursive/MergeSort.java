@@ -1,4 +1,4 @@
-package com.dsa.coursera_algo_part_1.sorts.merge_sort;
+package com.dsa.coursera_algo_part_1.sorts.merge_sort.recursive;
 
 import com.dsa.coursera_algo_part_1.sorts.Sort;
 
@@ -85,7 +85,7 @@ public class MergeSort<T extends Comparable<T>> implements Sort<T> {
         merge(elements, copy, low, mid, high);
     }
 
-    private void merge(T[] elements,T[] copy, int low, int mid, int high) {
+    protected void merge(T[] elements,T[] copy, int low, int mid, int high) {
         for (int index = low; index <= high; index++) {
             copy[index] = elements[index];
         }

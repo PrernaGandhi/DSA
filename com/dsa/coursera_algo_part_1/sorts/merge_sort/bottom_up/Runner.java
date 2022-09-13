@@ -1,4 +1,4 @@
-package com.dsa.coursera_algo_part_1.sorts.merge_sort;
+package com.dsa.coursera_algo_part_1.sorts.merge_sort.bottom_up;
 
 import com.dsa.coursera_algo_part_1.sorts.Sort;
 import java.util.Arrays;
