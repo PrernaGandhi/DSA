@@ -11,17 +11,22 @@ import java.util.Random;
 
     Complexity : O(N)
  */
-public class Shuffling {
+public class Shuffling<T extends Comparable<T>> {
 
-    private final Random random = SecureRandom.getInstanceStrong();
+    private Random random;
 
-    public Shuffling() throws NoSuchAlgorithmException {
+    {
+        try {
+            random = SecureRandom.getInstanceStrong();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 
-    void shuffle(Integer[] array){
+    public void shuffle(T[] array){
         for (int i = 0; i < array.length; i++) {
             int num = random.nextInt(i+1);
-            int temp = array[i];
+            T temp = array[i];
             array[i] = array[num];
             array[num] = temp;
         }
