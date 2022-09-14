@@ -818,5 +818,12 @@
 
        Now we sort the individual halves and the array is sorted
 
+##### **Heap Sort :**
+    Heap sort uses max heap under the hood
+    Build max heap using bottom-up method
+    sort down - delete the largest remaining item
+
+    Nlog N in place sorting algorithm, but not stable
+    poor use of cache memory
 
 
