@@ -1,19 +1,19 @@
 package com.dsa.coursera_algo_part_1.priority_queue;
 
-public class MaxPQ<Key extends Comparable<Key>> {
+public class MaxPQ<T extends Comparable<T>> {
 
-    private final Key[] pq;
+    private final T[] pq;
     private int n;
 
     public MaxPQ(int capacity) {
-        pq = (Key[]) new Comparable[capacity];
+        pq = (T[]) new Comparable[capacity];
     }
 
-    void insert(Key v) {
+    void insert(T v) {
         pq[n++] = v;
     }
 
-    Key deleteMax() {
+    T deleteMax() {
         int max = 0;
         for (int i = 1; i < n; i++) {
             if (less(max, i)) {
@@ -25,7 +25,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
     }
 
     private void exch(int max, int i) {
-        Key temp = pq[max];
+        T temp = pq[max];
         pq[max] = pq[i];
         pq[i] = temp;
     }
