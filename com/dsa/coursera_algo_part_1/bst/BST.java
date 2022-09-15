@@ -218,6 +218,7 @@ public class BST<K extends Comparable<K>, V extends Comparable<V>> {
         lazy approach -> mark with a color that it is deleted as long as there is
         not many deletions
 
+        hibbard deletion -> sqrt(N)
      */
     public void delete(K key) {
         root = delete(root, key);
