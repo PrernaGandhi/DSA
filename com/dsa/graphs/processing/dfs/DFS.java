@@ -124,7 +124,7 @@ public class DFS implements Paths {
     public DFS(Graph graph, Vertex sourceVertex) {
         dfsPath = new Stack<>();
         this.sourceVertex = sourceVertex;
-        for (Vertex v : graph.geVertices()) {
+        for (Vertex v : graph.getVertices()) {
             findPath(graph, v);
             if (!this.dfsPath.contains(v)) {
                 this.dfsPath.add(v);

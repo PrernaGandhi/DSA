@@ -61,7 +61,7 @@ public class DirectedGraph implements Graph {
     }
 
     @Override
-    public Iterable<Vertex> geVertices() {
+    public Iterable<Vertex> getVertices() {
         return vertices;
     }
 

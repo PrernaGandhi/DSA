@@ -10,6 +10,7 @@ public class Vertex {
     private List<Edge> adjacentEdges;
     private int inDegree;
     private Vertex parentVertex;
+    private double distanceFromSourceVertex;
 
     public Vertex(String name) {
         this.name = name;
@@ -54,6 +55,14 @@ public class Vertex {
 
     public void setParentVertex(Vertex parentVertex) {
         this.parentVertex = parentVertex;
+    }
+
+    public double getDistanceFromSourceVertex() {
+        return distanceFromSourceVertex;
+    }
+
+    public void setDistanceFromSourceVertex(double distanceFromSourceVertex) {
+        this.distanceFromSourceVertex = distanceFromSourceVertex;
     }
 
     @Override

@@ -8,7 +8,7 @@ public interface Graph {
 
     Iterable<Edge> getEdges();
 
-    Iterable<Vertex> geVertices();
+    Iterable<Vertex> getVertices();
 
     int numberOfVertices();
 
